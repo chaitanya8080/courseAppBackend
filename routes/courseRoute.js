@@ -1,6 +1,6 @@
 
 import  express  from "express";
-import { addLecture, createCourse, deleteCourse, deleteLecture, getAllCourses, getCourseLectures } from "../controllers/CourseController.js";
+import { addLecture, createCourse, deleteCourse, deleteLecture, getAllCourses, getCourseLectures } from "../controllers/courseController.js";
 import { authorizeAdmin, isAuthenticated,authorizeSubscribers } from "../middlewares/auth.js";
 import singleUpload from "../middlewares/multer.js";
 
