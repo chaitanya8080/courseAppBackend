@@ -39,7 +39,7 @@ export const register = async (req, res) => {
 
     sendToken(res, user, "Register Successfully", 201);
   } catch (error) {
-    return res.status(400).json({ error });
+    return res.status(400).json({error: error.message });
   }
 };
 
