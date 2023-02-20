@@ -12,9 +12,9 @@ export const register = async (req, res) => {
     const { name, email, password } = req.body;
     const file = req.file;
 
-    // if (!name || !email || !password ) {
-    //   return res.status(400).json({ message: "please add all fields" });
-    // }
+    if (!name || !email || !password  || !file) {
+      return res.status(400).json({ message: "please add all fields" });
+    }
 
     let user = await User.findOne({ email });
     if (user) {
