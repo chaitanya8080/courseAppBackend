@@ -5,25 +5,53 @@ import cloudinary from "cloudinary";
 import { StatsModel } from "../models/StatsModel.js";
 
 
-export const getAllCourses = (async (req, res, next) => {
+// export const getAllCourses = async (req, res, next) => {
   
 
-  const keyword = req.query.keyword || "";
-  const category = req.query.category ||"";
+//   const keyword = req.query.keyword || "";
+//   const category = req.query.category ||"";
 
-  const courses = await CourseModel.find({
-    title:{
-      $regex : keyword,
-      $options:"i"
-    },
-    category:{
-      $regex : category,
-      $options:"i"
-    }
-  }).select('-lectures');
+//   const courses = await CourseModel.find({
+//     title:{
+//       $regex : keyword,
+//       $options:"i"
+//     },
+//     category:{
+//       $regex : category,
+//       $options:"i"
+//     }
+//   }).select('-lectures');
 
-  res.status(200).json({ success: true, courses });
-});
+//   res.status(200).json({ success: true, courses });
+// };
+
+export const getAllCourses = async (req, res) => {
+  try {
+    const keyword = req.query.keyword || "";
+    const category = req.query.category ||"";
+
+    const courses = await CourseModel.find({
+      title:{
+        $regex : keyword,
+        $options:"i"
+      },
+      category:{
+        $regex : category,
+        $options:"i"
+      }
+    }).select('-lectures');
+
+    res.status(200).json({ success: true, courses });
+  } catch (error) {
+    return res.status(500).json({message:error.message});
+  }
+}
+
+
+
+
+
+
 
 
 
