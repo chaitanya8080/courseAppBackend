@@ -14,6 +14,10 @@ export const buySubscription = async (req, res, next) => {
 
     await user.save();
 
+    await PaymentModel.create({
+      subscriptionId: user.subscription.id,
+    });
+
     res
       .status(201)
       .json({
