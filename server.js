@@ -16,7 +16,7 @@ cloudinary.v2.config({
 })
 
 // full start = second , if one "0"  and increasing
-nodeCron.schedule("0 0 0 1 * *", async()=>{
+nodeCron.schedule("1 * * * * *", async()=>{
     try {
       await StatsModel.create({})
     } catch (error) {
